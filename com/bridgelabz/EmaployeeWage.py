@@ -4,6 +4,7 @@ import random
 class Employee:
     __WAGE_PER_HOUR = 20
     __FULL_DAY_HOUR = 8
+    __PART_TIME_HOUR = 4
 
     def employeeAttendance(self):
         if random.choice([1, 0]) == 0:
@@ -11,7 +12,7 @@ class Employee:
         return "absent"
 
     def calculateDailyEmployeeWage(self):
-        return Employee.__WAGE_PER_HOUR * Employee.__FULL_DAY_HOUR
+        return Employee.__WAGE_PER_HOUR * Employee.__PART_TIME_HOUR
 
 
 
