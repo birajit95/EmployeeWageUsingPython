@@ -11,8 +11,12 @@ class Employee:
             return "present"
         return "absent"
 
-    def calculateDailyEmployeeWage(self):
-        return Employee.__WAGE_PER_HOUR * Employee.__PART_TIME_HOUR
+    def getEmpPerDayWorkingHour(self):
+        workHourDict = {0: Employee.__PART_TIME_HOUR, 1: Employee.__FULL_DAY_HOUR}
+        return workHourDict.get(random.choice([0, 1]))
+
+    def calculateDailyEmployeeWage(self, employeeWorkHours):
+        return Employee.__WAGE_PER_HOUR * employeeWorkHours
 
 
 
@@ -21,6 +25,5 @@ if __name__ == "__main__":
 
     emp = Employee()
     print(emp.employeeAttendance())
-    print(emp.calculateDailyEmployeeWage())
-
-
+    print(emp.calculateDailyEmployeeWage(emp.getEmpPerDayWorkingHour()))
+    print(emp.getEmpPerDayWorkingHour())
