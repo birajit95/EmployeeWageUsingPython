@@ -11,6 +11,7 @@ class Employee:
     def __init__(self):
         self.__totalWage = 0
         self.__dailyWagesList = []
+        self.__dayWiseWageDict = {}
 
     def setTotalWage(self, totalWage):
         self.__totalWage = totalWage
@@ -23,6 +24,13 @@ class Employee:
 
     def getDailyWageList(self):
         return self.__dailyWagesList
+
+    def setDayWiseWage(self, day, dailyWage):
+        self.__dayWiseWageDict[day] = dailyWage
+
+    def getDayWiseWage(self):
+        for dayNum, wage in self.__dayWiseWageDict.items():
+            print("Day: " + str(dayNum) + " => " + str(wage))
 
     def employeeAttendance(self):
         if random.choice([1, 0]) == 0:
@@ -73,6 +81,7 @@ class EmployeeWageBuilder:
                 dailyWage = self.calculateDailyEmployeeWage(perDayWorkingHours)
                 totalWage += dailyWage
                 self.empObj.setDailyWage(dailyWage)
+                self.empObj.setDayWiseWage(totalDays, dailyWage)
         self.empObj.setTotalWage(totalWage)
 
 
@@ -85,3 +94,4 @@ if __name__ == "__main__":
     wageBuilder.wageBuilder()
     print(emp.getTotalWage())
     print(emp.getDailyWageList())
+    emp.getDayWiseWage()
